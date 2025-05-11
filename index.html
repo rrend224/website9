@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAYSIDE TAXI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hiragino Kaku Gothic Pro', 'メイリオ', sans-serif;
+        }
+        
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header styles */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+        }
+        
+        .wix-logo {
+            font-weight: bold;
+            font-size: 24px;
+            color: #000;
+        }
+        
+        .device-toggle {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .device-toggle i {
+            margin: 0 5px;
+        }
+        
+        .login-btn {
+            background-color: #3d7afc;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+        
+        /* Main header */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #222;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-weight: bold;
+            font-size: 18px;
+            margin-left: 10px;
+            color: #fff;
+        }
+        
+        .header-contact {
+            background-color: #f9d94a;
+            color: #000;
+            padding: 8px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .hours {
+            font-size: 12px;
+            color: #f9d94a;
+            text-align: right;
+            margin-right: 10px;
+        }
+        
+        /* Navigation */
+        .main-nav {
+            background-color: #f9d94a;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-right: 20px;
+            color: #333;
+        }
+        
+        .nav-links li i {
+            margin-right: 5px;
+        }
+        
+        .social-links a {
+            color: #333;
+            margin-left: 10px;
+        }
+        
+        /* Hero section */
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 50px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        /* Features section */
+        .features {
+            background-color: #f9d94a;
+            padding: 30px;
+            color: #333;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .feature {
+            flex: 1;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .feature::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ccc;
+        }
+        
+        .feature-icon {
+            background-color: #f9d94a;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            border: 1px solid #333;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-icon i {
+            font-size: 24px;
+        }
+        
+        .feature h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
+            font-size: 14px;
+        }
+        
+        .services-link {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: #222;
+            color: #fff;
+        }
+        
+        /* About section */
+        .about {
+            display: flex;
+            padding: 50px 0;
+        }
+        
+        .about-image {
+            flex: 1;
+            background-image: url('https://images.unsplash.com/photo-1533922922960-9fceb9ef4733?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .about-content {
+            flex: 1;
+            padding: 30px;
+        }
+        
+        .about-content h2 {
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .about-btn {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Testimonials section */
+        .testimonials {
+            background-image: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 50px 0;
+            position: relative;
+        }
+        
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .testimonials-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 0 30px;
+        }
+        
+        .testimonials h2 {
+            margin-bottom: 10px;
+        }
+        
+        .testimonials p {
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .testimonial-cards {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .testimonial-card {
+            flex: 1;
+            margin: 0 10px;
+            padding: 20px;
+            background-color: #222;
+            text-align: left;
+        }
+        
+        .testimonial-card p {
+            font-size: 14px;
+        }
+        
+        .testimonial-author {
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .quote-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #f9d94a;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .quote-icon i {
+            font-size: 30px;
+            color: #333;
+        }
+        
+        /* Contact section */
+        .contact {
+            background-color: #f9d94a;
+            padding: 50px 30px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .contact h2 {
+            margin-bottom: 10px;
+        }
+        
+        .contact-phone {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .contact p {
+            margin-bottom: 20px;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: transparent;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #222;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #222;
+            padding: 30px;
+            color: #fff;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact {
+            background-color: #f9d94a;
+            color: #333;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        
+        .footer-info {
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            color: #fff;
+            margin-left: 15px;
+        }
+        
+        .copyright {
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <div class="wix-logo">WIX</div>
+        <div class="device-toggle">
+            <i class="fas fa-desktop"></i>
+            <i class="fas fa-mobile-alt"></i>
+            「編集」をクリックして、お好みの表示スタイルを作りましょう
+            <a href="#" class="settings-link">設定を見る</a>
+        </div>
+        <button class="login-btn">編集</button>
+    </header>
+
+    <!-- Main Header -->
+    <div class="main-header">
+        <div class="logo">
+            <i class="fas fa-taxi" style="color: #f9d94a;"></i>
+            <span class="logo-text">BAYSIDE TAXI</span>
+        </div>
+        <div>
+            <div class="hours">24時間対応</div>
+            <div class="header-contact">12-3456-7890</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <ul class="nav-links">
+            <li><i class="fas fa-home"></i>ホーム</li>
+            <li><i class="fas fa-taxi"></i>ご案内</li>
+            <li><i class="fas fa-info-circle"></i>お問い合わせ</li>
+        </ul>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fas fa-link"></i></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>安全・快適な<br>移動空間を保証</h1>
+            <p>いつでも配車・予約が可能！</p>
+            <p>皆様に「選ばれる」タクシーサービス</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature">
+            <div class="feature-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>タクシー</h3>
+            <p>タイムリーかつスピーディなサービスで移動時間を短縮させる安全で快適な移動手段をご提供します。</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">
+                <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h3>空港送迎</h3>
+            <p>タイムリーかつスピーディなサービスで移動時間を短縮させる安全で快適な移動手段をご提供します。</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">
+                <i class="fas fa-car"></i>
+            </div>
+            <h3>ハイヤー</h3>
+            <p>タイムリーかつスピーディなサービスで移動時間を短縮させる安全で快適な移動手段をご提供します。</p>
+        </div>
+    </section>
+    <div class="services-link">サービス一覧 →</div>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-image"></div>
+        <div class="about-content">
+            <h2>ベイサイドタクシーについて</h2>
+            <p>テキストが入ります。ここをクリックして「テキストを編集」を選択するか、ここをダブルクリックしてテキストを編集してください。文字の大きさ、フォント、色を変更することもできます。ホームページの完成したら、「公開」ボタンをクリックして、ホームページを公開しましょう。</p>
+            <button class="about-btn">詳細はこちら</button>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-content">
+            <h2>お客様の声</h2>
+            <p>テキストが入ります。ここをクリックして「テキストを編集」を選択するか、ここをダブルクリックしてください。</p>
+            <div class="testimonial-cards">
+                <div class="testimonial-card" style="border-left: 5px solid #f9d94a;">
+                    <p>「カスタマーレビュー」の欄です。ここをクリックしてサービスを紹介してください。お客様の声を入れることで、信頼性が高まり、購入につながります。</p>
+                    <div class="testimonial-author">カリナ・カーター</div>
+                </div>
+                <div class="testimonial-card" style="border-left: 5px solid #f9d94a;">
+                    <p>「カスタマーレビュー」の欄です。ここをクリックしてサービスを紹介してください。お客様の声を入れることで、信頼性が高まり、購入につながります。</p>
+                    <div class="testimonial-author">ジョン・ジョンソン</div>
+                </div>
+                <div class="testimonial-card" style="border-left: 5px solid #f9d94a;">
+                    <p>「カスタマーレビュー」の欄です。ここをクリックしてサービスを紹介してください。お客様の声を入れることで、信頼性が高まり、購入につながります。</p>
+                    <div class="testimonial-author">ロバート・スミス</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2>ご予約はこちらから！</h2>
+        <div class="contact-phone">お電話：12-3456-7890</div>
+        <p>または下記のフォームにてお問い合わせください：</p>
+        <form class="contact-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="お名前">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="メールアドレス">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="4" placeholder="メッセージ内容"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">送信</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-taxi" style="color: #f9d94a;"></i>
+                <span class="logo-text">BAYSIDE TAXI</span>
+            </div>
+            <div class="footer-contact-info">
+                <div class="footer-contact">お問い合わせ：12-3456-7890</div>
+            </div>
+        </div>
+        <div class="footer-info">
+            <p>事業者情報</p>
+            <p>会社名：株式会社</p>
+        </div>
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fas fa-link"></i></a>
+        </div>
+        <div class="copyright">
+            © 2035 Bayside Taxi - Wixサイトの一部として作成されました
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to navigation
+            const navItems = document.querySelectorAll('.nav-links li');
+            navItems.forEach(item => {
+                item.addEventListener('mouseover', function() {
+                    this.style.opacity = '0.7';
+                });
+                item.addEventListener('mouseout', function() {
+                    this.style.opacity = '1';
+                });
+            });
+            
+            // Form validation
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const inputs = this.querySelectorAll('.form-control');
+                    let isValid = true;
+                    
+                    inputs.forEach(input => {
+                        if (!input.value.trim()) {
+                            input.style.borderColor = 'red';
+                            isValid = false;
+                        } else {
+                            input.style.borderColor = '#ccc';
+                        }
+                    });
+                    
+                    if (isValid) {
+                        alert('フォームが送信されました。ありがとうございます！');
+                        this.reset();
+                    } else {
+                        alert('すべての項目を入力してください。');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
