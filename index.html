@@ -25,41 +25,6 @@
             color: inherit;
         }
         
-        /* Header styles */
-        .top-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #fff;
-        }
-        
-        .wix-logo {
-            font-weight: bold;
-            font-size: 24px;
-            color: #000;
-        }
-        
-        .device-toggle {
-            display: flex;
-            align-items: center;
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .device-toggle i {
-            margin: 0 5px;
-        }
-        
-        .login-btn {
-            background-color: #3d7afc;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 5px 15px;
-            cursor: pointer;
-        }
-        
         /* Main header */
         .main-header {
             display: flex;
@@ -67,6 +32,8 @@
             align-items: center;
             padding: 15px 30px;
             background-color: #222;
+            position: relative;
+            z-index: 100;
         }
         
         .logo {
@@ -96,6 +63,34 @@
             margin-right: 10px;
         }
         
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            z-index: 101;
+        }
+        
+        .hamburger-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: #f9d94a;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
         /* Navigation */
         .main-nav {
             background-color: #f9d94a;
@@ -112,6 +107,7 @@
         .nav-links li {
             margin-right: 20px;
             color: #333;
+            cursor: pointer;
         }
         
         .nav-links li i {
@@ -431,21 +427,143 @@
             border-top: 1px solid #333;
             padding-top: 20px;
         }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Header */
+            .main-header {
+                padding: 15px 20px;
+            }
+            
+            .hours {
+                font-size: 10px;
+            }
+            
+            .header-contact {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+            
+            /* Hamburger Menu */
+            .hamburger-menu {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            
+            /* Navigation */
+            .main-nav {
+                flex-direction: column;
+                padding: 0;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background-color: #222;
+                z-index: 100;
+                transition: right 0.3s ease;
+            }
+            
+            .main-nav.active {
+                right: 0;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                padding: 80px 30px 30px;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+                color: #f9d94a;
+            }
+            
+            .social-links {
+                padding: 20px 30px;
+            }
+            
+            .social-links a {
+                color: #f9d94a;
+                margin: 0 10px 0 0;
+            }
+            
+            /* Hero */
+            .hero {
+                height: 350px;
+                padding: 0 20px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            /* Features */
+            .features {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .feature {
+                margin-bottom: 30px;
+            }
+            
+            .feature::after {
+                display: none;
+            }
+            
+            /* About */
+            .about {
+                flex-direction: column;
+                padding: 30px 0;
+            }
+            
+            .about-image {
+                height: 200px;
+            }
+            
+            /* Testimonials */
+            .testimonial-cards {
+                flex-direction: column;
+            }
+            
+            .testimonial-card {
+                margin: 10px 0;
+            }
+            
+            /* Footer */
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-contact-info {
+                margin-top: 15px;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+            
+            .contact-phone {
+                font-size: 20px;
+            }
+            
+            .footer {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Top Header -->
-    <header class="top-header">
-        <div class="wix-logo">WIX</div>
-        <div class="device-toggle">
-            <i class="fas fa-desktop"></i>
-            <i class="fas fa-mobile-alt"></i>
-            「編集」をクリックして、お好みの表示スタイルを作りましょう
-            <a href="#" class="settings-link">設定を見る</a>
-        </div>
-        <button class="login-btn">編集</button>
-    </header>
-
     <!-- Main Header -->
     <div class="main-header">
         <div class="logo">
@@ -455,6 +573,12 @@
         <div>
             <div class="hours">24時間対応</div>
             <div class="header-contact">12-3456-7890</div>
+        </div>
+        <!-- ハンバーガーメニュー -->
+        <div class="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 
@@ -584,15 +708,38 @@
     <script>
         // Simple JavaScript for interactive elements
         document.addEventListener('DOMContentLoaded', function() {
-            // Add hover effects to navigation
+            // ハンバーガーメニューの動作
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const mainNav = document.querySelector('.main-nav');
+            
+            hamburgerMenu.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+            
+            // メニュー項目をクリックしたらメニューを閉じる
             const navItems = document.querySelectorAll('.nav-links li');
             navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    hamburgerMenu.classList.remove('active');
+                    mainNav.classList.remove('active');
+                });
+                
+                // ホバーエフェクト
                 item.addEventListener('mouseover', function() {
                     this.style.opacity = '0.7';
                 });
                 item.addEventListener('mouseout', function() {
                     this.style.opacity = '1';
                 });
+            });
+            
+            // 画面外クリックでメニューを閉じる
+            document.addEventListener('click', function(event) {
+                if (!mainNav.contains(event.target) && !hamburgerMenu.contains(event.target) && mainNav.classList.contains('active')) {
+                    hamburgerMenu.classList.remove('active');
+                    mainNav.classList.remove('active');
+                }
             });
             
             // Form validation
